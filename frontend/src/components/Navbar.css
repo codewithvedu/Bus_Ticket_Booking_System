@@ -10,5 +10,5 @@
 
 .nav-link-custom:hover {
   transform: scale(1.12);
-  color: #9C27B0 !important; /* Bootstrap primary color */
+  color: #9C27B0 !important; 
 }

@@ -16,10 +16,10 @@ export function PrivateRoute(props){
             return <AccessDenied/>
         }
         
-        // send user on the desired component
+        
     }
     else{
-        // redirect a user on login page
+       
         return <Navigate to={"/"} />
     }
 }

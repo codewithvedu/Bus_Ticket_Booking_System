@@ -1,25 +1,7 @@
 import { getConnectionObject } from "../configs/DbConfig.js";
 
 // CREATE - Add a new booking
-// export async function addBooking(request, response) {
-//   try {
-//     const connection = await getConnectionObject();
-//     const { user_id, bus_id, seats, total_amount, status } = request.body;
 
-//     const qry = `INSERT INTO bookings (user_id, bus_id, seats, total_amount, status)
-//                  VALUES (${user_id}, ${bus_id}, ${seats}, ${total_amount}, '${status}')`;
-
-//     const [result] = await connection.query(qry);
-
-//     if (result.affectedRows === 1)
-//       response.status(200).send({ message: "Booking created successfully" });
-//     else
-//       response.status(500).send({ message: "Failed to create booking" });
-//   } catch (error) {
-//     console.error(error);
-//     response.status(500).send({ message: "Something went wrong" });
-//   }
-// }
 export async function addBooking(request, response) {
   try {
     const connection = await getConnectionObject();
@@ -59,7 +41,7 @@ export async function addBooking(request, response) {
 }
 
 
-// READ ALL - Get all bookings (with user + bus info)
+// READ ALL - Get all bookings 
 export async function getAllBookings(request, response) {
   try {
     const connection = await getConnectionObject();

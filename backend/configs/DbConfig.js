@@ -1,4 +1,4 @@
-// configs/DbConfig.js
+
 import mysql2 from "mysql2/promise";
 
 let connection = null;
@@ -8,8 +8,8 @@ export async function connectDb() {
     connection = await mysql2.createConnection({
       host: "localhost",
       user: "root",
-      password: "cdac",          // <-- your MySQL password
-      database: "online_booking_system", // <-- match your DB name exactly
+      password: "cdac",         
+      database: "online_booking_system", 
       port: 3306                 
     });
     console.log(" Database connected successfully");

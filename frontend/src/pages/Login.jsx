@@ -1,4 +1,4 @@
-// src/pages/Login.jsx
+
 import React, { useState } from "react";
 import { loginUser, loginAdmin } from "../api/api.js";
 import { useNavigate } from "react-router-dom";
@@ -45,7 +45,7 @@ export default function Login() {
 
   return (
     <div className="container mt-5" style={{ maxWidth: "400px" }}>
-      {/* ✅ Toast Container */}
+      {/* Toast Container */}
       <ToastContainer position="top-end" className="p-3">
         <Toast
           bg={toastVariant}

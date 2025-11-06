@@ -13,26 +13,26 @@ export async function login(req, res) {
     const qry = `SELECT * FROM ${tableName} WHERE email = ?`;
     const [rows] = await connection.query(qry, [email]);
 
-    // Check if user exists
+
     if (rows.length === 0) {
       return res.status(400).send({ message: "Login failed, email not found" });
     }
 
     const user = rows[0];
 
-    // Compare password
+    
     const isPasswordValid =
       user.password === password || compareSync(password, user.password);
 
-    //const isPasswordValid = compareSync(password, user.password);
+    
     if (!isPasswordValid) {
       return res.status(400).send({ message: "Invalid password" });
     }
 
-    // Generate token WITHOUT expiry
+    
     const token = jwt.sign(
       { userId: user.id, role },
-      "user1234" // secret key (no expiresIn)
+      "user1234" 
     );
 
     // Success response

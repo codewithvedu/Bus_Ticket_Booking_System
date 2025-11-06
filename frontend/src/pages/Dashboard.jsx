@@ -24,7 +24,7 @@ export default function Dashboard() {
   const user = JSON.parse(localStorage.getItem("user"));
   const role = user?.role?.toLowerCase();
 
-  // Load all buses (for admin)
+  // Load all buses 
   useEffect(() => {
     async function loadBuses() {
       if (role === "admin") {
@@ -66,16 +66,17 @@ export default function Dashboard() {
 };
 
 
-  // Navigate to bus add/edit page (you can create those routes later)
+  
   const handleAddBus = () => navigate("/add-bus");
   const handleEditBus = (id) => navigate(`/edit-bus/${id}`);
 
-  // Render section
+  
+  
   
 
   return (
     <Container className="my-4">
-      {/* CUSTOMER / USER VIEW */}
+      {/* USER VIEW */}
       {role === "customer" && (
         <>
           <p className="lead text-center">

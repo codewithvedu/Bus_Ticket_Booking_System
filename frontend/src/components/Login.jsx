@@ -26,7 +26,7 @@ export function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            //event.preventDefault();
+            
             console.log(formData);
             const response = await login(formData);
             if (response.status === 200) {
@@ -71,14 +71,14 @@ export function Login() {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label>Role</Form.Label>
-                            <Form.Check // prettier-ignore
+                            <Form.Check 
                                 type={"radio"}
                                 label={`Admin`}
                                 name="role"
                                 value={"admin"}
                                 onChange={handleChange}
                             />
-                            <Form.Check // prettier-ignore
+                            <Form.Check 
                                 type={"radio"}
                                 label={`Customer`}
                                 name="role"

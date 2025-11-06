@@ -9,7 +9,7 @@ export default function MyBookings() {
 
   // load user and role BEFORE useEffect
   const user = JSON.parse(localStorage.getItem("user") || "null");
-  const role = user?.role?.toLowerCase(); // admin or customer
+  const role = user?.role?.toLowerCase(); 
 
   useEffect(() => {
     async function loadBookings() {
@@ -87,7 +87,7 @@ export default function MyBookings() {
           )}
         </tbody>
       </Table>
-      {/* Footer */}
+      
       <footer className="bg-light py-3 text-center border-top mt-5">
         <small>
           &copy; {new Date().getFullYear()} Online Ticket Booking System. All

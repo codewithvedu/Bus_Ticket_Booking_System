@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/register", registerUser);
 router.post("/login", login);
 
-// Example of protected user profile route
+
 router.get("/profile", verifyToken, authorize([ROLES.USER]), (req, res) => {
   res.send({ message: "Welcome user!", userId: req.user.userId });
 });

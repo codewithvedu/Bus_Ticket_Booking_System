@@ -4,7 +4,7 @@ import { Container, Row, Col, Card, Image } from "react-bootstrap";
 export default function About() {
   return (
     <div>
-      {/* Hero Section */}
+      
       <div className="bg-primary text-white text-center py-5">
         <h1>About Online Ticket Booking System</h1>
         <p className="lead">
@@ -67,7 +67,7 @@ export default function About() {
               </Card.Body>
             </Card>
           </Col>
-          <Col md={4} sm={12}>
+          <Col md={4} sm={12} className="mb-3">
             <Card className="h-100 shadow-sm">
               <Card.Body>
                 <Card.Title>Support</Card.Title>
