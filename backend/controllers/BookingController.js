@@ -1,25 +1,63 @@
 import { getConnectionObject } from "../configs/DbConfig.js";
 
 // CREATE - Add a new booking
+// export async function addBooking(request, response) {
+//   try {
+//     const connection = await getConnectionObject();
+//     const { user_id, bus_id, seats, total_amount, status } = request.body;
+
+//     const qry = `INSERT INTO bookings (user_id, bus_id, seats, total_amount, status)
+//                  VALUES (${user_id}, ${bus_id}, ${seats}, ${total_amount}, '${status}')`;
+
+//     const [result] = await connection.query(qry);
+
+//     if (result.affectedRows === 1)
+//       response.status(200).send({ message: "Booking created successfully" });
+//     else
+//       response.status(500).send({ message: "Failed to create booking" });
+//   } catch (error) {
+//     console.error(error);
+//     response.status(500).send({ message: "Something went wrong" });
+//   }
+// }
 export async function addBooking(request, response) {
   try {
     const connection = await getConnectionObject();
-    const { user_id, bus_id, seats, total_amount, status } = request.body;
+    const { user_id, bus_id, seats, status } = request.body;
+    const [busRows] = await connection.query(
+      `SELECT price FROM buses WHERE id = ?`,
+      [bus_id]
+    );
+
+    if (busRows.length === 0) {
+      return response.status(404).send({ message: "Bus not found" });
+    }
+
+    const price = busRows[0].price;
+    const total_amount = price * seats;
 
     const qry = `INSERT INTO bookings (user_id, bus_id, seats, total_amount, status)
-                 VALUES (${user_id}, ${bus_id}, ${seats}, ${total_amount}, '${status}')`;
+                 VALUES (?, ?, ?, ?, ?)`;
 
-    const [result] = await connection.query(qry);
+    const [result] = await connection.query(qry, [
+      user_id,
+      bus_id,
+      seats,
+      total_amount,
+      status,
+    ]);
 
     if (result.affectedRows === 1)
-      response.status(200).send({ message: "Booking created successfully" });
+      response.status(200).send({ message: "Booking created successfully", total_amount });
     else
       response.status(500).send({ message: "Failed to create booking" });
+
   } catch (error) {
     console.error(error);
     response.status(500).send({ message: "Something went wrong" });
   }
 }
+
 
 // READ ALL - Get all bookings (with user + bus info)
 export async function getAllBookings(request, response) {
@@ -82,14 +120,33 @@ export async function getBookingById(request, response) {
 export async function updateBooking(request, response) {
   try {
     const connection = await getConnectionObject();
-    const { user_id, bus_id, seats, total_amount, status } = request.body;
+    const { user_id, bus_id, seats, status } = request.body;
+
+    // Get price of bus
+    const [busRows] = await connection.query(
+      `SELECT price FROM buses WHERE id = ?`,
+      [bus_id]
+    );
+
+    if (busRows.length === 0) {
+      return response.status(404).send({ message: "Bus not found" });
+    }
+
+    const price = busRows[0].price;
+    const total_amount = price * seats;
 
     const qry = `UPDATE bookings 
-                 SET user_id=${user_id}, bus_id=${bus_id}, seats=${seats}, 
-                     total_amount=${total_amount}, status='${status}'
-                 WHERE id=${request.params.id}`;
+                 SET user_id=?, bus_id=?, seats=?, total_amount=?, status=?
+                 WHERE id=?`;
 
-    const [result] = await connection.query(qry);
+    const [result] = await connection.query(qry, [
+      user_id,
+      bus_id,
+      seats,
+      total_amount,
+      status,
+      request.params.id
+    ]);
 
     if (result.affectedRows === 1)
       response.status(200).send({ message: "Booking updated successfully" });
@@ -100,6 +157,7 @@ export async function updateBooking(request, response) {
     response.status(500).send({ message: "Something went wrong" });
   }
 }
+
 
 //  DELETE - Delete booking by ID
 export async function deleteBooking(request, response) {

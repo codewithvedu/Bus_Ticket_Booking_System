@@ -5,7 +5,7 @@ import { addBooking } from "../api/api";
 export default function BookingWidget({ busId }) {
   const [form, setForm] = useState({ seats: "", payment_mode: "Online" });
 
- 
+
   const [showToast, setShowToast] = useState(false);
   const [toastMsg, setToastMsg] = useState("");
   const [toastVariant, setToastVariant] = useState("success");
@@ -26,9 +26,9 @@ export default function BookingWidget({ busId }) {
       bus_id: busId,
       seats: form.seats,
       payment_mode: form.payment_mode,
-      status: "Confirmed",
-      total_amount: 500 * parseInt(form.seats || 0),
+      status: "Confirmed"
     };
+
 
     try {
       await addBooking(bookingData);
@@ -48,7 +48,7 @@ export default function BookingWidget({ busId }) {
 
   return (
     <>
-     
+
       <ToastContainer position="top-end" className="p-3">
         <Toast
           show={showToast}
