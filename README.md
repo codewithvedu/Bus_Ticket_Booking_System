@@ -1,4 +1,4 @@
-# 🚌 Bus Ticket Booking System
+# 🚌 Bus Ticket Booking System { BUS KARO }
 
 A full-stack web application designed to provide a smooth and secure bus ticket booking experience.
 
@@ -11,6 +11,10 @@ Book and view tickets
 Dashboard & My Bookings pages
 
 Responsive and clean UI
+
+Two roles in  Website - Admin - User
+
+Smooth CRUD Operations 
 
 # 🎯 Project Focus
 
@@ -25,9 +29,18 @@ Backend: Node.js, Express
 Database: MySQL
 
 # 📂 Folder Structure
-/frontend   → Client UI
+# /backend    → Server & APIs
 
-/backend    → Server & APIs
+<img width="216" height="663" alt="image" src="https://github.com/user-attachments/assets/79461a59-650c-49e6-8216-9882f59b024a" />
+
+# /frontend   → Client UI
+
+<img width="212" height="504" alt="image" src="https://github.com/user-attachments/assets/dfc73124-c383-4282-b953-9e142dfad95f" />
+
+---
+
+<img width="189" height="693" alt="image" src="https://github.com/user-attachments/assets/4f080234-e61d-479a-b8d6-5b6cc15f760e" />
+
 
 # 🚀 How to Run
 # Frontend
