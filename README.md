@@ -1,4 +1,4 @@
-# 🚌 Bus Ticket Booking System { BUS KARO }
+# 🚌 Bus Ticket Booking System { QUICK BUS }
 
 A full-stack web application designed to provide a smooth and secure bus ticket booking experience.
 
